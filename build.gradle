@@ -1,0 +1,31 @@
+group 'com.evandro.oliveira'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.ratpack:ratpack-gradle:1.4.5"
+    }
+}
+
+apply plugin: "io.ratpack.ratpack-java"
+repositories {
+    jcenter()
+}
+dependencies {
+    testCompile 'junit:junit:4.11'
+    runtime "org.slf4j:slf4j-simple:1.7.21"
+    compile ratpack.dependency('hikari')
+}
+test {
+    testLogging {
+        events 'started', 'passed'
+    }
+}
